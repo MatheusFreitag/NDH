@@ -1,0 +1,88 @@
+// Place all the styles related to the processos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+html h1{
+  font-weight: lighter;
+  color: #4527a0;
+}
+
+html h1.processoTitle{
+  font-weight: lighter;
+  text-align: center;
+  color: #4527a0;
+  font-size: 80px;
+  display: inline;
+  margin-left: 30%;
+}
+.container_showProcessos{
+  width: 88%;
+  margin-left: 5%;
+  margin-top: 40px;
+  h1{
+    margin-left: 20px;
+  }
+  a.btn-large{
+    float: right;
+    margin-top: 20px;
+  }
+
+}
+html p{
+  font-weight: 400;
+}
+
+.row .col.s12.m6{
+  margin-left: 5%;
+	width: 90%;
+}
+
+.card-action.title{
+  font-size: 20px;
+}
+
+p{
+  text-align: justify;
+  margin: 0px;
+}
+.left{
+  float: left;
+}
+
+.middle{
+  float: left;
+  padding-left: 15%;
+}
+
+.right{
+  float: left;
+}
+
+strong{
+  font-weight: 300;
+  color: #311b92;
+}
+
+html .voltar.btn-large{
+  float: left;
+  margin-left: 8%;
+}
+
+form{
+  margin-left: 15%;
+  margin-right: 15%;
+}
+html .input-field.col.s6{
+  width: 300px;
+}
+.backbutton{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 15%;
+  width: 12%;
+}
+
+a.voltar{
+  margin-top: -20px;
+}

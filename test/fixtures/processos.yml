@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 
+  numeroProcesso: 1
+  numeroCaixa: 1
+  dataInicio: 2016-10-16
+  dataFim: 2016-10-16
+  demanda: MyText
+  tipoDeAcao: MyString
+  juiz: MyString
+  vara: 1
+  arquivado: false
+  tipoDeDemandantes: MyString
+  conclusao: MyString
+
+two:
+  id: 
+  numeroProcesso: 1
+  numeroCaixa: 1
+  dataInicio: 2016-10-16
+  dataFim: 2016-10-16
+  demanda: MyText
+  tipoDeAcao: MyString
+  juiz: MyString
+  vara: 1
+  arquivado: false
+  tipoDeDemandantes: MyString
+  conclusao: MyString

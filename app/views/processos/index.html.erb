@@ -1,0 +1,72 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container_showProcessos">
+  <%= link_to 'Registrar Novo Processo', new_processo_path, class: 'waves-effect waves-light btn-large deep-purple darken-3' %>
+  <h1>Lista de Processos</h1>
+</div>
+
+<% if @processos.blank? %>
+<h4>Não há processos ligados ao termo "<%= params[:search] %>" :(</h4>
+<% end %>
+
+<% @processos.each do |processo| %>
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card grey lighten-3">
+        <div class="card-content black-text">
+          <span class="card-title">Processo: <%= processo.numeroProcesso %></span>
+          <p><%= processo.demanda %></p>
+        </div>
+        <div class="card-action deep-purple darken-3">
+          <%= link_to 'Mostrar', processo %>
+          <% if user_signed_in?  %>
+          <%= link_to 'Editar', edit_processo_path(processo) %>
+          <%= link_to 'Deletar', processo, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<!--
+<table>
+  <thead>
+    <tr>
+      <th>Numeroprocesso</th>
+      <th>Numerocaixa</th>
+      <th>Datainicio</th>
+      <th>Datafim</th>
+      <th>Demanda</th>
+      <th>Tipodeacao</th>
+      <th>Juiz</th>
+      <th>Vara</th>
+      <th>Arquivado</th>
+      <th>Tipodedemandantes</th>
+      <th>Conclusao</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @processos.each do |processo| %>
+      <tr>
+        <td><%= processo.numeroProcesso %></td>
+        <td><%= processo.numeroCaixa %></td>
+        <td><%= processo.dataInicio %></td>
+        <td><%= processo.dataFim %></td>
+        <td><%= processo.demanda %></td>
+        <td><%= processo.tipoDeAcao %></td>
+        <td><%= processo.juiz %></td>
+        <td><%= processo.vara %></td>
+        <td><%= processo.arquivado %></td>
+        <td><%= processo.tipoDeDemandantes %></td>
+        <td><%= processo.conclusao %></td>
+        <td><%= link_to 'Show', processo %></td>
+        <td><%= link_to 'Edit', edit_processo_path(processo) %></td>
+        <td><%= link_to 'Destroy', processo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+-->
+<br>

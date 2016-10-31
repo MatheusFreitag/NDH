@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ndh</title>
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <div id="wrapper">
+      <div id="header">
+        <nav>
+            <div class="nav-wrapper deep-purple darken-3">
+              <%= link_to 'NDH', root_path, class: 'brand-logo left'%>
+              <%= form_tag(processos_path, :method => "get", id: "search-form", class: "left") do %>
+                <%= text_field_tag :search, params[:search], placeholder: "Pesquisar Processos" %>
+              <% end %>
+
+              <ul id="nav-mobile" class="right">
+                <% if user_signed_in?  %>
+                  <li><%= link_to 'Editar Perfil', edit_user_registration_path %></li>
+                  <li><%= link_to 'Logout', destroy_user_session_path, method: :delete%></li>
+                  <% else %>
+                    <li><%= link_to 'Login', new_user_session_path %></li>
+                    <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+                  <% end %>
+              </ul>
+            </div>
+        </nav>
+      </div>
+      <div id="content">
+        <%= yield %>
+      </div>
+
+      <div id="footer" class="deep-purple lighten-5">
+        © 2014 Copyright Text
+      </div>
+    </div>
+
+  </body>
+</html>
