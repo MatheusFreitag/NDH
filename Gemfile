@@ -21,6 +21,7 @@ gem 'materialize-sass'
 gem 'jquery-turbolinks'
 gem 'simple_form'
 gem 'materialize-form'
+gem 'will_paginate', '~> 3.1.0'
 
 
 

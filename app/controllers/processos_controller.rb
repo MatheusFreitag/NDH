@@ -5,10 +5,11 @@ class ProcessosController < ApplicationController
   # GET /processos.json
   def index
     @processos = Processo.all
+      @processos = @processos.paginate(page: params[:page], per_page: 5)
      if params[:search]
-       @processos = Processo.search(params[:search]).order("created_at DESC")
+       @processos = @processos.search(params[:search]).order("created_at DESC")
      else
-       @processos = Processo.all.order("created_at DESC")
+       @processos = @processos.all.order("created_at DESC")
      end
   end
 
