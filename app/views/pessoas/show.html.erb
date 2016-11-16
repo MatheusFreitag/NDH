@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @pessoa.nome %>
+</p>
+
+<p>
+  <strong>Sobrenome:</strong>
+  <%= @pessoa.sobrenome %>
+</p>
+
+<p>
+  <strong>Estadocivil:</strong>
+  <%= @pessoa.estadoCivil %>
+</p>
+
+<p>
+  <strong>Nacionalidade:</strong>
+  <%= @pessoa.nacionalidade %>
+</p>
+
+<p>
+  <strong>Endereco:</strong>
+  <%= @pessoa.endereco %>
+</p>
+
+<p>
+  <strong>Genero:</strong>
+  <%= @pessoa.genero %>
+</p>
+
+<p>
+  <strong>Idade:</strong>
+  <%= @pessoa.idade %>
+</p>
+
+<p>
+  <strong>Profissao:</strong>
+  <%= @pessoa.profissao %>
+</p>
+
+<p>
+  <strong>Beneficio:</strong>
+  <%= @pessoa.beneficio %>
+</p>
+
+<p>
+  <strong>Alfabetizado:</strong>
+  <%= @pessoa.alfabetizado %>
+</p>
+
+<p>
+  <strong>Numerocarteiradetrabalho:</strong>
+  <%= @pessoa.numeroCarteiraDeTrabalho %>
+</p>
+
+<p>
+  <strong>Referencia do Processo:</strong>
+  <%= @pessoa.referenciaProcesso %>
+</p>
+
+<%= link_to 'Edit', edit_pessoa_path(@pessoa) %> |
+<%= link_to 'Back', pessoas_path %>

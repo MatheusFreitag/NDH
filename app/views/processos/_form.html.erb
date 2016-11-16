@@ -1,65 +1,56 @@
-<%= simple_form_for(processo) do |f| %>
-  <% if processo.errors.any? %>
+<%= simple_form_for(@processo) do |f| %>
+  <% if @processo.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(processo.errors.count, "error") %> prohibited this processo from being saved:</h2>
-
       <ul>
-      <% processo.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% processo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div >
     <%= f.input :numeroProcesso, label: "Número do Processo", wrapper_html: { class: 'm6 s12' } %>
-  </div>
-  <div >
     <%= f.input :numeroCaixa, label: "Número de Caixa", wrapper_html: { class: 'm6 s12' } %>
-  </div>
-
-  <div>
     <%= f.input :dataInicio, label: "Data de Início", wrapper_html: { class: 'm6 s12' }%>
-  </div>
-
-  <div>
     <%= f.input :dataFim, label: "Data de Fim", wrapper_html: { class: 'm6 s12' } %>
-  </div>
-
-
-  <div >
     <%= f.input :demanda, label: "Descrição", wrapper_html: { class: 'm6 s12' } %>
-  </div>
-
-  <div >
     <%= f.label "Tipo de Ação" %>
     <%= f.select :tipoDeAcao, options_for_select([['Individual', 'Individual'], ['Plúrima', 'Plúrima']]) %>
-
-
-  </div>
-  <div >
     <%= f.input :juiz, label: "Juiz", wrapper_html: { class: 'm6 s12' } %>
-  </div>
-
-  <div >
     <%= f.input :vara, label: "Vara", wrapper_html: { class: 'm6 s12' } %>
-  </div>
-
-  <div>
-    <%= f.input :arquivado, as: :radio_buttons, wrapper_html: { class: 'm6 s12'}%>
-  </div>
- <br>
-  <div >
+    <%= f.input :arquivado, wrapper_html: { class: 'm6 s12'}%>
+    <br>
     <%= f.label "Tipo de Demandantes" %>
     <%= f.select :tipoDeDemandantes, options_for_select([['Empregador', 'Empregador'], ['Empregado', 'Empregado']])%>
-  </div>
 
   <div class="field">
     <%= f.label "Conclusão" %>
     <%= f.select :conclusao, options_for_select([['Acordo', 'Acordo'], ['Procedente', 'Procedente'], ['Procedente Em Parte', 'Procedente Em Parte'], ['Improcedente', 'Improcedente'], ['Cancelado', 'Cancelado']]) %>
+  </div>
+  
+  
+<% end %>
+
+<%= simple_form_for(@pessoa) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :nome %>
+    <%= f.input :sobrenome %>
+    <%= f.input :estadoCivil %>
+    <%= f.input :nacionalidade %>
+    <%= f.input :endereco %>
+    <%= f.input :genero %>
+    <%= f.input :idade %>
+    <%= f.input :profissao %>
+    <%= f.input :beneficio %>
+    <%= f.input :alfabetizado %>
+    <%= f.input :numeroCarteiraDeTrabalho %>
   </div>
 
   <div class="actions waves-effect waves-light btn deep-purple darken-3">
     <%= f.submit "Submeter"%>
   </div>
 <% end %>
+
