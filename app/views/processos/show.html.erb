@@ -66,6 +66,12 @@
         <br />
         <br />
 
+        <% if(Pessoa.find_by_referenciaProcesso(@processo.numeroProcesso)) %>
+            <strong>Este processo esta no nome de: </strong>
+            <%= link_to Pessoa.find_by_referenciaProcesso(@processo.numeroProcesso).nome + " " + Pessoa.find_by_referenciaProcesso(@processo.numeroProcesso).sobrenome, Pessoa.find_by_referenciaProcesso(@processo.numeroProcesso) %>
+        <% else %> 
+          <strong>Este processo não possui referência para uma pessoa </strong>
+        <% end %>  
       </div>
 
       <div class="card-action deep-purple darken-3 white-text">
