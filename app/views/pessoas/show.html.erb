@@ -57,8 +57,18 @@
 
 <p>
   <strong>Referencia do Processo:</strong>
-  <%= @pessoa.referenciaProcesso %>
+  <% if (@pessoa.referenciaProcesso) %>
+    <% if (Processo.find_by_numeroProcesso(@pessoa.referenciaProcesso)) %>
+      <%= link_to @pessoa.referenciaProcesso, Processo.find_by_numeroProcesso(@pessoa.referenciaProcesso) %>
+    <% else %>
+       <%= @pessoa.referenciaProcesso %> (O Processo não consta no sistema)
+    <% end %>  
+  <% else %>
+    <p> Não há </p>
+  <% end %>  
 </p>
+
+
 
 <%= link_to 'Edit', edit_pessoa_path(@pessoa) %> |
 <%= link_to 'Back', pessoas_path %>

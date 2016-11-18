@@ -6,6 +6,7 @@ class PessoasController < ApplicationController
   def index
     @pessoas = Pessoa.all
     @pessoas = @pessoas.paginate(page: params[:page], per_page: 20)
+    
   end
 
   # GET /pessoas/1
