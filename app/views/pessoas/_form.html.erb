@@ -4,7 +4,7 @@
   <div class="form-inputs">
     <%= f.input :nome %>
     <%= f.input :sobrenome %>
-    <%= f.input :estadoCivil %>
+    <%= f.input :estadoCivil, label: 'Estado Civil' %>
     <%= f.input :nacionalidade %>
     <%= f.input :endereco %>
     <%= f.input :genero %>
@@ -12,8 +12,8 @@
     <%= f.input :profissao %>
     <%= f.input :beneficio %>
     <%= f.input :alfabetizado %>
-    <%= f.input :numeroCarteiraDeTrabalho %>
-    <%= f.input :referenciaProcesso %>
+    <%= f.input :numeroCarteiraDeTrabalho, label: 'Número da Carteira de Trabalho' %>
+    <%= f.input :referenciaProcesso, label: 'Número do Processo Correspondente ' %>
   </div>
 
   <div class="form-actions">

@@ -1,0 +1,13 @@
+<h1>Painel Administrativo</h1>
+
+<% if user_signed_in? && current_user.admin? %>
+    <% @users.each do |user| %>
+    <p>
+        <%= user.email %>
+        <%= link_to "Deletar", admin_destroy_user_path(user), data: { confirm: 'Tem certeza que quer deletar este usuário?' }, method: :delete %>
+    </p>
+    <% end %>
+    
+<% else %>
+    <p>Você não possui autorização para administrar usuários :(</p>
+<% end %>    

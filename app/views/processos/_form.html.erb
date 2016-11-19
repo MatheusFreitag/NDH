@@ -28,26 +28,7 @@
     <%= f.label "Conclusão" %>
     <%= f.select :conclusao, options_for_select([['Acordo', 'Acordo'], ['Procedente', 'Procedente'], ['Procedente Em Parte', 'Procedente Em Parte'], ['Improcedente', 'Improcedente'], ['Cancelado', 'Cancelado']]) %>
   </div>
-  
-  
-<% end %>
 
-<%= simple_form_for(@pessoa) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :nome %>
-    <%= f.input :sobrenome %>
-    <%= f.input :estadoCivil %>
-    <%= f.input :nacionalidade %>
-    <%= f.input :endereco %>
-    <%= f.input :genero %>
-    <%= f.input :idade %>
-    <%= f.input :profissao %>
-    <%= f.input :beneficio %>
-    <%= f.input :alfabetizado %>
-    <%= f.input :numeroCarteiraDeTrabalho %>
-  </div>
 
   <div class="actions waves-effect waves-light btn deep-purple darken-3">
     <%= f.submit "Submeter"%>
