@@ -4,6 +4,7 @@
     <% @users.each do |user| %>
     <p>
         <%= user.email %>
+         <td><%= link_to 'Edit', edit_user_registration_path(@user) %></td>
         <%= link_to "Deletar", admin_destroy_user_path(user), data: { confirm: 'Tem certeza que quer deletar este usuário?' }, method: :delete %>
     </p>
     <% end %>
