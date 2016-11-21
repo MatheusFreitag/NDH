@@ -1,0 +1,24 @@
+<h1>Pesquisa avançada de Processos</h1>
+<%= simple_form_for(@search) do |s| %>
+
+    <%= s.input :numeroProcesso, label: "Número do Processo" %>
+    <%= s.input :numeroCaixa, label: "Número de Caixa:" %>
+    <%= s.input :dataInicio, label: "Data de Inicio a partir de:" %>
+    <%= s.input :dataFim, label: "Data de Fim até:" %>
+    <%= s.label "Tipo de Ação" %>
+    <%= s.select :tipodeAcao , options_for_select(@tipo_Acao), :include_blank => true %>
+    <%= s.input :juiz, label: "Juiz:", as: :boolean %>
+    <%= s.input :vara, label: "Vara:" %>
+    <%= s.input :arquivado, label: "Arquivado:" %>
+    <br/>
+    <%= s.label "Tipo de Demandantes" %>
+    <%= s.select :tipoDeDemandante, options_for_select(@tipo_Demandantes), :include_blank => true %>
+    <br/>
+    <%= s.label "Resultado" %>
+    <%= s.select :conclusao, options_for_select(@conclusao), :include_blank => true %>
+    <br/>
+    
+    <%= s.submit "Pesquisar" %>
+<% end %>    
+
+   <br/>

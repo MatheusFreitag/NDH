@@ -4,7 +4,6 @@ class ProcessosController < ApplicationController
   # GET /processos
   # GET /processos.json
   def index
-    @pessoas = Pessoa.all
     @processos = Processo.all
       @processos = @processos.paginate(page: params[:page], per_page: 20)
      if params[:search]
@@ -17,12 +16,10 @@ class ProcessosController < ApplicationController
   # GET /processos/1
   # GET /processos/1.json
   def show
-    @pessoa = Pessoa.all
   end
 
   # GET /processos/new
   def new
-    @pessoa = Pessoa.new
     @processo = Processo.new
   end
 
@@ -69,6 +66,10 @@ class ProcessosController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  #def search
+  #  @processo = Processo.joins(:pessoa).select("processos.*,pessoas.*").find params[:id]
+  #end
 
   private
     # Use callbacks to share common setup or constraints between actions.

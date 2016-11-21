@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :pessoas
   resources :processos
   resources :users
+  resources :searches
   devise_for :users, :path_prefix => 'd'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
