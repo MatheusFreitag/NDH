@@ -1,6 +1,15 @@
-<h1>Editing Pessoa</h1>
+<h1 class="generalTitle">Editar Pessoa</h1>
+
+<% if current_user.admin? or current_user.bolsista? %>
 
 <%= render 'form', pessoa: @pessoa %>
 
-<%= link_to 'Show', @pessoa %> |
-<%= link_to 'Back', pessoas_path %>
+<br>
+<br>
+<br>
+
+<% else %>
+
+<p> Você não possui privilégios para editar :(</p>
+
+<%end%>

@@ -26,8 +26,13 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class: "voltar waves-effect waves-light btn-large deep-purple darken-3" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <%= link_to "Sign up", new_registration_path(resource_name), class: "waves-effect waves-light btn-large deep-purple darken-3" %><br />
+<% end -%>
+
+

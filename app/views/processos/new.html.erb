@@ -1,5 +1,9 @@
-<h1 class="processoTitle">Novo Processo</h1>
+<h1 class="generalTitle">Novo Processo</h1>
 
-<%= render 'form', processo: @processo %>
-
-<%= link_to 'Cancelar', processos_path, class: "backbutton waves-effect waves-light btn deep-purple darken-3" %>
+<% if (user_signed_in? and (current_user.admin? or current_user.bolista?)) %>
+    <%= render 'form', processo: @processo %>
+    <br>
+    <br>
+<% else %>
+    <p>Você não possui autorização para isso :(</p>
+<% end %>    

@@ -1,4 +1,4 @@
-<h2>Log in</h2>
+<h1 class="generalTitle">Log in</h1>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -19,8 +19,11 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <br>
+    <%= f.submit "Login", class: "voltar waves-effect waves-light btn-large deep-purple darken-3" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%- if controller_name != 'sessions' %>
+  <%= link_to "Login", new_session_path(resource_name), class: "voltar waves-effect waves-light btn-large deep-purple darken-3" %><br />
+<% end -%>

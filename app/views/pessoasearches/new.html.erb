@@ -1,0 +1,31 @@
+<h1 class="generalTitle">Pesquisa avançada de Pessoas</h1>
+<%= simple_form_for(@pessoasearch) do |s| %>
+
+    <%= s.input :referenciaProcesso, label: "Pessoas com processos registrados?", as: :boolean %>
+    <br/>
+    <%= s.input :nome, label: "Nome" %>
+    <%= s.input :sobrenome, label: "Sobrenome" %>
+    <%= s.label "Gênero"%>
+    <%= s.select :genero , options_for_select(@genero), :include_blank => true %>
+    <br/>
+    <%= s.label "estado Civil"%>
+    <%= s.select :estadoCivil , options_for_select(@estadoCivil), :include_blank => true %>
+    <br/>
+    <%= s.label "Profissão"%>
+    <%= s.select :profissao , options_for_select(@profissao), :include_blank => true %>
+    <br/>
+    <%= s.input :alfabetizado, label: "Alfabetizado" %>
+    <br/>
+    <%= s.label "Nacionalidade"%>
+    <%= s.select :nacionalidade , options_for_select(@nacionalidade), :include_blank => true %>
+    <br/>
+    <%= s.input :beneficio, label: "Beneficiário?" %>
+    <br/>
+    
+    <%= s.submit "Pesquisar", class: "waves-effect waves-light btn-large deep-purple darken-3" %>
+    <br/>
+<% end %>    
+
+   <br/>
+   <br/>
+   <br/>

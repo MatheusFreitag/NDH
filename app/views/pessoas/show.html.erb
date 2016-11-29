@@ -1,74 +1,84 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @pessoa.nome %>
-</p>
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card grey lighten-3">
+      <div class="card-action title deep-purple darken-3 white-text">
+        Nome: <%= @pessoa.nome + " " + @pessoa.sobrenome %>
+        <p class="right">
+          <% if (Processo.find_by_numeroProcesso(@pessoa.referenciaProcesso))%>
+              Processo: <%= link_to @pessoa.referenciaProcesso, Processo.find_by_numeroProcesso(@pessoa.referenciaProcesso) %>
+          <%else%>
+             Processo: Sem registro
+          <%end %>
+        </p>
+      </div>
+      <div class="card-content black-text">
+        <p class="left">
+          <strong>Estado Civil:</strong>
+          <%= @pessoa.estadoCivil %>
+        </p>
 
-<p>
-  <strong>Sobrenome:</strong>
-  <%= @pessoa.sobrenome %>
-</p>
+        <p class="middle">
+          <strong>Genero:</strong>
+          <%= @pessoa.genero %>
+        </p>
 
-<p>
-  <strong>Estadocivil:</strong>
-  <%= @pessoa.estadoCivil %>
-</p>
+        <p class="middle">
+          <strong>Profissão:</strong>
+          <%= @pessoa.profissao %>
+        </p>
 
-<p>
-  <strong>Nacionalidade:</strong>
-  <%= @pessoa.nacionalidade %>
-</p>
-
-<p>
-  <strong>Endereco:</strong>
-  <%= @pessoa.endereco %>
-</p>
-
-<p>
-  <strong>Genero:</strong>
-  <%= @pessoa.genero %>
-</p>
-
-<p>
-  <strong>Idade:</strong>
-  <%= @pessoa.idade %>
-</p>
-
-<p>
-  <strong>Profissao:</strong>
-  <%= @pessoa.profissao %>
-</p>
-
-<p>
-  <strong>Beneficio:</strong>
-  <%= @pessoa.beneficio %>
-</p>
-
-<p>
-  <strong>Alfabetizado:</strong>
-  <%= @pessoa.alfabetizado %>
-</p>
-
-<p>
-  <strong>Numerocarteiradetrabalho:</strong>
-  <%= @pessoa.numeroCarteiraDeTrabalho %>
-</p>
-
-<p>
-  <strong>Referencia do Processo:</strong>
-  <% if (@pessoa.referenciaProcesso) %>
-    <% if (Processo.find_by_numeroProcesso(@pessoa.referenciaProcesso)) %>
-      <%= link_to @pessoa.referenciaProcesso, Processo.find_by_numeroProcesso(@pessoa.referenciaProcesso) %>
-    <% else %>
-       <%= @pessoa.referenciaProcesso %> (O Processo não consta no sistema)
-    <% end %>  
-  <% else %>
-    <p> Não há </p>
-  <% end %>  
-</p>
+        <p class="right">
+          <strong>N'úmero da Carteira de Trabalho:</strong>
+          <%= @pessoa.numeroCarteiraDeTrabalho %>
+        </p>
 
 
+        <br />
+        <br />
+        <strong>Idade:</strong>
+        <p><%= @pessoa.idade %></p>
+        <br />
+        <br />
 
-<%= link_to 'Edit', edit_pessoa_path(@pessoa) %> |
-<%= link_to 'Back', pessoas_path %>
+        <p class="left">
+          <strong>Afabetizado:</strong>
+          <%if @pessoa.alfabetizado %>
+            Sim
+          <%else%>
+            Não
+          <% end %>  
+        </p>
+
+        <p class="middle">
+          <strong>Beneficio:</strong>
+          <%if @pessoa.beneficio %>
+            Sim
+          <%else%>
+            Não
+          <% end %>
+        </p>
+
+        <br />
+        <br />
+
+    </div>
+    <div class="card-action deep-purple darken-3 white-text">
+        <% if user_signed_in?  %>
+          <% if current_user.admin? or current_user.bolsista?  %>
+            <%= link_to 'Editar', edit_pessoa_path(@pessoa) %>
+          <% end %>
+          <% if current_user.admin? %>
+            <%= link_to 'Deletar', @pessoa, method: :delete, data: { confirm: 'Tem certeza?' } %>
+          <% end %>  
+        <% end %>
+      </div>
+  </div>
+</div>
+</div>
+
+<%= link_to 'Voltar', pessoas_path, class: "voltar waves-effect waves-light btn-large deep-purple darken-3" %>
+ <br/>
+ <br/>
+ <br/>

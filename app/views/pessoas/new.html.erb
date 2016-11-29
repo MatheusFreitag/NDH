@@ -1,5 +1,13 @@
-<h1>New Pessoa</h1>
+<h1 class="generalTitle">Nova Pessoa</h1>
 
+<% if (user_signed_in? and (current_user.admin? or current_user.bolsista?)) %>
 <%= render 'form', pessoa: @pessoa %>
 
-<%= link_to 'Back', pessoas_path %>
+
+<% else %>
+    <p>Você não possui autorização para isso :(</p>
+<% end %>    
+
+<br/>
+<br/>
+<br/>

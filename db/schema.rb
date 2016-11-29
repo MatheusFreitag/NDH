@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121021601) do
+ActiveRecord::Schema.define(version: 20161121151701) do
 
   create_table "pessoas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "nome"
@@ -27,6 +27,21 @@ ActiveRecord::Schema.define(version: 20161121021601) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.string   "referenciaProcesso"
+  end
+
+  create_table "pessoasearches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "nome"
+    t.string   "sobrenome"
+    t.string   "estadoCivil"
+    t.string   "nacionalidade"
+    t.string   "genero"
+    t.integer  "idade"
+    t.string   "profissao"
+    t.boolean  "beneficio"
+    t.boolean  "alfabetizado"
+    t.string   "referenciaProcesso"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "processos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -81,6 +96,7 @@ ActiveRecord::Schema.define(version: 20161121021601) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.boolean  "admin"
+    t.boolean  "bolsista"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

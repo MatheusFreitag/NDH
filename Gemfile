@@ -22,9 +22,12 @@ gem 'jquery-turbolinks'
 gem 'simple_form'
 gem 'materialize-form'
 gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-materialize'
 gem 'yaml_db'
 gem 'mysql2'
 gem "nested_form"
+gem "pundit"
+
 
 
 

@@ -1,13 +1,42 @@
-<h1>Painel Administrativo</h1>
+<h1 class="generalTitle">Painel Administrativo</h1>
 
 <% if user_signed_in? && current_user.admin? %>
-    <% @users.each do |user| %>
-    <p>
-        <%= user.email %>
-        <%= link_to "Deletar", admin_destroy_user_path(user), data: { confirm: 'Tem certeza que quer deletar este usuário?' }, method: :delete %>
-    </p>
-    <% end %>
-    
+
+ <table class="striped">
+        <thead>
+          <tr>
+              <th data-field="id">Email</th>
+              <th data-field="id">Bolsista?</th>
+              <th data-field="name">Editar Acesso</th>
+              <th data-field="price">Deletar usuário</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <% @users.each do |user| %>
+          <tr>
+            <td><%= user.email %></td>
+                <% if !user.admin? %>
+                    <td>
+                        <% if user.bolsista? %>
+                            Sim
+                        <%else%>
+                            Não
+                        <%end%> 
+                    </td>
+                    <td><%= link_to "Editar", edit_user_path(user) %></td>
+                    <td><%= link_to "Deletar", admin_destroy_user_path(user), data: { confirm: 'Tem certeza que quer deletar este usuário?' }, method: :delete %></td>
+                <% else %>  
+                    <td>admin</td> 
+                    <td>admin</td> 
+                    <td>admin</td> 
+                <% end %>    
+          </tr>
+          
+        <% end %>  
+        </tbody>
+      </table>
+
 <% else %>
     <p>Você não possui autorização para administrar usuários :(</p>
 <% end %>    

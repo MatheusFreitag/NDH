@@ -4,25 +4,38 @@
     <title>Ndh</title>
     <%= csrf_meta_tags %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
     <div id="wrapper">
       <div id="header">
+        
+        <ul id="dropdown1" class="dropdown-content">
+          <li><%= link_to "Processos", processos_path %></li>
+          <li><%= link_to "Pessoas", pessoas_path %></li>
+          <% if user_signed_in? and current_user.admin? %>
+            <li><%= link_to "Usuários", users_path %></li>
+          <% end %>
+        </ul>
+        
+        <ul id="dropdown2" class="dropdown-content">
+          <li><%= link_to "Processos", new_search_path %></li>
+          <li><%= link_to "Pessoas", new_pessoasearch_path %></li>
+        </ul>
+        
         <nav>
             <div class="nav-wrapper deep-purple darken-3">
               <%= link_to 'NDH', root_path, class: 'brand-logo left'%>
-              <%= form_tag(processos_path, :method => "get", id: "search-form", class: "left") do %>
-                <%= text_field_tag :search, params[:search], placeholder: "Pesquisar Processos" %>
-              <% end %>
+              
 
               <ul id="nav-mobile" class="right">
+                <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Pesquisar<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Listas<i class="material-icons right">arrow_drop_down</i></a></li>
                 <% if user_signed_in?  %>
                   <li><%= link_to 'Editar Perfil', edit_user_registration_path %></li>
                   <li><%= link_to 'Logout', destroy_user_session_path, method: :delete%></li>
@@ -35,11 +48,14 @@
         </nav>
       </div>
       <div id="content">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
         <%= yield %>
       </div>
 
-      <div id="footer" class="deep-purple lighten-5">
-        © 2014 Copyright Text
+      <div id="footer">
+       <p> © <%=Date.today.year %> NDH</p>
+       <p>Desenvolvido por <%= link_to "Matheus Freitag", "https://github.com/MatheusFreitag", :target => "_blank" %></p>
       </div>
     </div>
 

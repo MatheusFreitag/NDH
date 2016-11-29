@@ -1,0 +1,37 @@
+<h1 class="generalTitle">Número de resultados: <%= @pessoasearch.busca_avancada_pessoa.count %></h1>
+
+
+<% if @pessoasearch.busca_avancada_pessoa.empty? %>
+    <p>Nenhuma pessoa encontrada :(</p>
+<% else %>
+
+   <% @pessoasearch.busca_avancada_pessoa.each do |s| %>
+   <div class="row">
+        <div class="col s12 m6">
+          <div class="card grey lighten-3">
+            <div class="card-content black-text">
+              <span class="card-title">
+                Nome: <%=link_to s.nome + " " + s.sobrenome, pessoa_path(s) %>
+                <% if (Processo.find_by_numeroProcesso(s.referenciaProcesso))%>
+                    <p class="right"> Processo: <%= link_to s.referenciaProcesso, Processo.find_by_numeroProcesso(s.referenciaProcesso) %></p>
+                <%else%>
+                   <p class="right"> Processo: Sem registro</p>
+                <%end %>
+            </div>
+            <div class="card-action deep-purple darken-3">
+              <%= link_to 'Mostrar', s %>
+            </div>
+          </div>
+        </div>
+    </div>
+   
+  
+    <% end %>
+    
+<% end %>
+
+
+<%= link_to 'Voltar para Busca', new_pessoasearch_path, class: "voltar waves-effect waves-light btn-large deep-purple darken-3" %>
+   <br/>
+   <br/>
+   <br/>

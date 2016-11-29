@@ -1,16 +1,40 @@
-<h1>Número de resultados: <%= @search.busca_avancada_processo.count %></h1>
+<h1 class="generalTitle">Número de resultados: <%= @search.busca_avancada_processo.count %></h1>
 
 
 <% if @search.busca_avancada_processo.empty? %>
-    <p>Nenhum processo encontrado :(</p>
+<br>
+    <%= link_to 'Voltar para Pesquisa', new_search_path, class: "voltar waves-effect waves-light btn-large deep-purple darken-3" %>  
+  
 <% else %>
 
    <% @search.busca_avancada_processo.each do |s| %>
-       Processo: <%= s.numeroProcesso %>
-       Detalhes: <%= s.demanda %>
-       <br/>
-    
+      <div class="row">
+            <div class="col s12 m6">
+              <div class="card grey lighten-3">
+                <div class="card-content black-text">
+                  <span class="card-title">Processo: <%= s.numeroProcesso %></span>
+                  <p><%= s.demanda %></p>
+                </div>
+                <div class="card-action deep-purple darken-3">
+                  <%= link_to 'Mostrar', processo_path(s) %>
+                  <% if user_signed_in?  %>
+                    <% if current_user.bolsista? or current_user.admin?  %>
+                      <%= link_to 'Editar', edit_processo_path(s) %>
+                    <% end %>  
+                    <% if current_user.admin?  %>
+                      <%= link_to 'Deletar', s, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+        </div>
     <% end %>
-    
-<% end %>    
+    <br/>
+
+  <%= link_to 'Voltar para Pesquisa', new_search_path, class: "voltar waves-effect waves-light btn-large deep-purple darken-3" %>  
+    <br/><br/><br/>
+<% end %>   
+
+
      

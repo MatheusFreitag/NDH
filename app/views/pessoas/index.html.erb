@@ -1,49 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="container_showPessoas">
+<h1 class="pessoaTitle">Lista de Pessoas</h1>
+<%= link_to 'Registrar Nova Pessoa', new_pessoa_path, class: "waves-effect waves-light btn-large deep-purple darken-3" %>
+</div>
 
-<h1>Pessoas</h1>
+<% @pessoas.each do |pessoa| %>
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card grey lighten-3">
+        <div class="card-content black-text">
+          <span class="card-title">Nome: <%= pessoa.nome + " " + pessoa.sobrenome %>
+            <% if (Processo.find_by_numeroProcesso(pessoa.referenciaProcesso))%>
+                <p class="right"> Processo: <%= link_to pessoa.referenciaProcesso, Processo.find_by_numeroProcesso(pessoa.referenciaProcesso) %></p>
+            <%else%>
+               <p class="right"> Processo: Sem registro</p>
+            <%end %>
+          </span>
+        </div>
+        <div class="card-action deep-purple darken-3">
+          <%= link_to 'Mostrar', pessoa %>
+          <% if user_signed_in?  %>
+            <% if current_user.bolsista? or current_user.admin?  %>
+              <%= link_to 'Editar', edit_pessoa_path(pessoa) %>
+            <% end %>  
+            <% if current_user.admin?  %>
+              <%= link_to 'Deletar', pessoa, method: :delete, data: { confirm: 'Tem certeza?' } %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Sobrenome</th>
-      <th>Estadocivil</th>
-      <th>Nacionalidade</th>
-      <th>Endereco</th>
-      <th>Genero</th>
-      <th>Idade</th>
-      <th>Profissao</th>
-      <th>Beneficio</th>
-      <th>Alfabetizado</th>
-      <th>Numerocarteiradetrabalho</th>
-      <th>referenciaProcesso</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= will_paginate @pessoas, renderer: MaterializePagination::Rails %>
 
-  <tbody>
-    <% @pessoas.each do |pessoa| %>
-      <tr>
-        <td><%= pessoa.nome %></td>
-        <td><%= pessoa.sobrenome %></td>
-        <td><%= pessoa.estadoCivil %></td>
-        <td><%= pessoa.nacionalidade %></td>
-        <td><%= pessoa.endereco %></td>
-        <td><%= pessoa.genero %></td>
-        <td><%= pessoa.idade %></td>
-        <td><%= pessoa.profissao %></td>
-        <td><%= pessoa.beneficio %></td>
-        <td><%= pessoa.alfabetizado %></td>
-        <td><%= pessoa.numeroCarteiraDeTrabalho %></td>
-        <td><%= pessoa.referenciaProcesso %></td>
-        <td><%= link_to 'Show', pessoa %></td>
-        <td><%= link_to 'Edit', edit_pessoa_path(pessoa) %></td>
-        <td><%= link_to 'Destroy', pessoa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= will_paginate @pessoas%>
+
+
 <br>
-
-<%= link_to 'New Pessoa', new_pessoa_path %>
+<br><br>

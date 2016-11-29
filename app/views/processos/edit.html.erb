@@ -1,6 +1,16 @@
 <h1 class="processoTitle">Editar Processo</h1>
 
+<% if current_user.admin? or current_user.bolsista? %>
+
 <%= render 'form', processo: @processo %>
 
-<%= link_to 'Show', @processo %> |
-<%= link_to 'Back', processos_path %>
+<br>
+<br>
+<br>
+
+
+<% else %>
+
+<p> Você não possui privilégios para editar :(</p>
+
+<% end %>

@@ -1,4 +1,4 @@
-<h1>Pesquisa avançada de Processos</h1>
+<h1 class="generalTitle">Pesquisa avançada de Processos</h1>
 <%= simple_form_for(@search) do |s| %>
 
     <%= s.input :numeroProcesso, label: "Número do Processo" %>
@@ -7,7 +7,7 @@
     <%= s.input :dataFim, label: "Data de Fim até:" %>
     <%= s.label "Tipo de Ação" %>
     <%= s.select :tipodeAcao , options_for_select(@tipo_Acao), :include_blank => true %>
-    <%= s.input :juiz, label: "Juiz:", as: :boolean %>
+    <%= s.input :juiz, label: "Juiz:" %>
     <%= s.input :vara, label: "Vara:" %>
     <%= s.input :arquivado, label: "Arquivado:" %>
     <br/>
@@ -18,7 +18,7 @@
     <%= s.select :conclusao, options_for_select(@conclusao), :include_blank => true %>
     <br/>
     
-    <%= s.submit "Pesquisar" %>
+    <%= s.submit "Pesquisar", class: "waves-effect waves-light btn-large purple darken-4" %>
 <% end %>    
 
    <br/>
